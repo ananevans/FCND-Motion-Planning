@@ -54,6 +54,7 @@ python motion_planning.py
 You should see the quad fly a jerky path of waypoints to the northeast for about 10 m then land.  What's going on here? Your first task in this project is to explain what's different about `motion_planning.py` from the `backyard_flyer_solution.py` script, and how the functions provided in `planning_utils.py` work. 
 
 **Differences**
+
 In `motion_planning.py` the set of states contains an extra state, `PLANNING` with tranzitions `ARMING` --> `PLANNING` using the method `plan_path` and `PLANNING` --> `TAKEOFF` using the method `takeoff_transition`. The path planning method load the information about obstacles from the `colliders.csv` file, then creates the grid representation from the data loaded by calling the function `create_grid` from the file `planning_utils.py`.  Next, the start and goal points are initiliazed and uthe A* algorithm is used to find a path from start to goal. The path is jerky because all the waypoints are kept, even if they are collinear. The drone stops to each waypoint before moving on to the next.
 
 ### Step 7: Write your planner
